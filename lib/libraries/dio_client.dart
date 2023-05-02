@@ -56,6 +56,7 @@ class DioClient<T> {
     ProgressCallback? onReceiveProgress,
     Options? options,
     FormData? formData,
+    bool? isJson,
   }) async {
     param = param;
 
@@ -70,6 +71,8 @@ class DioClient<T> {
         onSendProgress: onSendProgress ?? (p0, p1) {},
         onReceiveProgress: onReceiveProgress ?? (p0, p1) {},
         formDataa: formData,
+        options: options,
+        isJson: isJson,
       );
       return response;
     } catch (error) {
@@ -138,6 +141,7 @@ class DioClient<T> {
     required ProgressCallback onReceiveProgress,
     Options? options,
     FormData? formDataa,
+    bool? isJson,
   }) async {
     String uniqueCode = DateTime.now().toString();
     String paramStr = "";
@@ -162,11 +166,11 @@ class DioClient<T> {
       Dio dio = Dio(baseOptions);
       dio.interceptors.add(
         PrettyDioLogger(
-          request: false, //true,
-          requestHeader: false,
+          request: true, //true,
+          requestHeader: true,
           requestBody: true,
-          responseHeader: false,
-          responseBody: false, //true,
+          responseHeader: true,
+          responseBody: true, //true,
           error: true,
           compact: true,
           maxWidth: 90,
@@ -179,7 +183,7 @@ class DioClient<T> {
 
       // post dio
       Response response = await dio.post(url,
-          data: formData,
+          data: isJson == true ? jsonEncode(param) : formData,
           onSendProgress: onSendProgress,
           onReceiveProgress: onReceiveProgress,
           options: options);

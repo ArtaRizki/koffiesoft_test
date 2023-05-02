@@ -100,12 +100,15 @@ class _RegisterViewState extends State<RegisterView> {
         tanggalLahirTitle(),
         tanggalLahirField(),
         tanggalLahirErrorText(),
+        jenisKelaminTitle(),
+        jenisKelaminField(),
         passwordTitle(),
         passwordField(),
         passwordErrorText(),
         reTypePasswordTitle(),
         reTypePasswordField(),
         reTypePasswordErrorText(),
+        loginButton(),
         registerButton()
       ];
 
@@ -441,6 +444,58 @@ class _RegisterViewState extends State<RegisterView> {
         style: redValidateErrorRequired());
   }
 
+  jenisKelaminTitle() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Row(
+        children: [
+          Text('Jenis Kelamin', style: inter14Medium()),
+          Text('*', style: redRequired())
+        ],
+      ),
+    );
+  }
+
+  jenisKelaminField() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 5, bottom: 15),
+      child: Row(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: Radio(
+              fillColor: MaterialStateProperty.all(Colors.blue),
+              value: 1,
+              groupValue: rp.jenisKelamin,
+              onChanged: (value) {
+                rp.jenisKelamin = value as int?;
+              },
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text("Laki-laki", style: inter14Medium()),
+          const SizedBox(width: 24),
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: Radio(
+              fillColor: MaterialStateProperty.all(Colors.blue),
+              value: 2,
+              groupValue: rp.jenisKelamin,
+              onChanged: (value) {
+                rp.jenisKelamin = value as int?;
+              },
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text("Perempuan", style: inter14Medium()),
+        ],
+      ),
+    );
+  }
+
   checkFirstname(String? val) {
     String? msg = registerFirstname(val);
     rp.firstnameEmpty = msg != null;
@@ -485,6 +540,26 @@ class _RegisterViewState extends State<RegisterView> {
     rp.tglLahirError = msg ?? "";
   }
 
+  Widget loginButton() {
+    return rp.isLoading
+        ? const SizedBox()
+        : InkWell(
+            // onTap: () => null,
+            onTap: () => routes.loginView(),
+            child: const Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Sudah Punya Akun ? masuk di sini",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 16,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          );
+  }
+
   registerButton() {
     if (rp.isLoading) {
       return Padding(
@@ -513,15 +588,17 @@ class _RegisterViewState extends State<RegisterView> {
           checkReTypePassword(rp.reTypePasswordValue, rp.passwordValue, true);
           Map<String, dynamic> result =
               await registerService.registerUser(context);
-          // await otpWindow(context, emailHp: emailC.text);
+
           // log("LOGIN RESULT : $result");
           if (result['status']['kode'] == 'success') {
-            firstnameC.text = "";
-            lastnameC.text = "";
-            tanggalLahirC.text = "";
-            passwordC.text = "";
-            reTypePasswordC.text = "";
-            await routes.loginView();
+            // firstnameC.text = "";
+            // lastnameC.text = "";
+            // tanggalLahirC.text = "";
+            // passwordC.text = "";
+            // reTypePasswordC.text = "";
+            await otpWindow(navigatorKey.currentState!.context,
+                emailHp: emailC.text);
+            // await routes.loginView();
           } else {}
           rp.isLoading = false;
         },
@@ -621,9 +698,11 @@ class _RegisterViewState extends State<RegisterView> {
                                 log("DATE 2 : ${DateTime.now()}");
                                 setState(() => _selectedTglLahir = value);
                                 checkTanggalLahir(_selectedTglLahir.toString());
-                                rp.tglLahir =
+                                String tglLahir =
                                     convertTglInggris(value.toString());
-                                log("DATE 3 : ${convertTglInggris(value.toString())}");
+                                tglLahir = tglLahir.substring(0, 10);
+                                rp.tglLahir = tglLahir;
+                                log("DATE 3 : ${rp.tglLahir}");
                                 setState(() {});
                               },
                             ),
@@ -653,7 +732,7 @@ class _RegisterViewState extends State<RegisterView> {
         onPressed: () async {
           // _selectedTglLahir = _selectedTglLahir;
           log("SELECTED DATE : $_selectedTglLahir");
-          rp.tglLahir = _selectedTglLahir.toString();
+          // rp.tglLahir = _selectedTglLahir.toString();
           checkTanggalLahir(_selectedTglLahir.toString());
           setState(() {});
 

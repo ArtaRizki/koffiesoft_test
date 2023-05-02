@@ -23,49 +23,54 @@ class RegisterService {
         !rp.firstnameEmpty &&
         !rp.lastnameEmpty &&
         !rp.reTypePasswordEmpty) {
-      // try {
-      d.Response<dynamic>? response = await dio.requestPost(
-        registerUserPath,
-        {
-          "email": rp.emailValue,
-          "hp": rp.noHpValue,
-          "firstname": rp.firstnameValue,
-          "lastname": rp.lastnameValue,
-          "grup": "member",
-          "role": "",
-          "tgl_lahir": rp.tglLahir,
-          "jenis_kelamin": null,
-          "password": rp.passwordValue,
-          "strict_password": false,
-          "referral_code": "",
-        },
-        onSendProgress: null,
-        onReceiveProgress: null,
-        options: null,
-      );
-      Map<String, dynamic> result = response!.data;
-      if (result['status']['kode'] == 'success') {
-        rp.emailValue = "";
-        rp.noHpValue = "";
-        rp.firstnameValue = "";
-        rp.lastnameValue = "";
-        rp.tglLahir = "";
-        rp.passwordValue = "";
-        rp.reTypePasswordValue = "";
-        log("REGISTER RESULT : ${jsonEncode(result['data'])}");
-        Fluttertoast.showToast(msg: "Register Sukses");
-        rp.isLoading = false;
-        log("REGISTER RESULT 2 : ${jsonEncode(result)}");
-        return result;
-      } else {
-        Fluttertoast.showToast(msg: jsonEncode(result['status']['keterangan']));
+      try {
+        d.Response<dynamic>? response = await dio.requestPost(
+          registerUserPath,
+          {
+            "email": rp.emailValue,
+            "hp": rp.noHpValue,
+            "firstname": rp.firstnameValue,
+            "lastname": rp.lastnameValue,
+            "grup": "member",
+            "role": "",
+            "tgl_lahir": rp.tglLahir,
+            "jenis_kelamin": rp.jenisKelamin,
+            "password": rp.passwordValue,
+            "strict_password": false,
+            "referral_code": "",
+          },
+          onSendProgress: null,
+          onReceiveProgress: null,
+          isJson: true,
+          options: d.Options(
+            contentType: d.Headers.jsonContentType,
+            responseType: d.ResponseType.json,
+          ),
+        );
+        Map<String, dynamic> result = response!.data;
+        if (result['status']['kode'] == 'success') {
+          rp.emailValue = "";
+          rp.noHpValue = "";
+          rp.firstnameValue = "";
+          rp.lastnameValue = "";
+          rp.tglLahir = "";
+          rp.passwordValue = "";
+          rp.reTypePasswordValue = "";
+          log("REGISTER RESULT : ${jsonEncode(result['data'])}");
+          Fluttertoast.showToast(msg: "Register Sukses");
+          rp.isLoading = false;
+          log("REGISTER RESULT 2 : ${jsonEncode(result)}");
+          return result;
+        } else {
+          Fluttertoast.showToast(
+              msg: jsonEncode(result['status']['keterangan']));
+          rp.isLoading = false;
+          return {};
+        }
+      } catch (e) {
         rp.isLoading = false;
         return {};
       }
-      // } catch (e) {
-      //   rp.isLoading = false;
-      //   return null;
-      // }
     } else {
       rp.isLoading = false;
       return {};
@@ -85,7 +90,11 @@ class RegisterService {
       },
       onSendProgress: null,
       onReceiveProgress: null,
-      options: null,
+      isJson: true,
+      options: d.Options(
+        contentType: d.Headers.jsonContentType,
+        responseType: d.ResponseType.json,
+      ),
     );
     log("RESPONSE SENDOTP : $response");
     Map<String, dynamic> result = response!.data;
@@ -108,7 +117,11 @@ class RegisterService {
       {"credential": emailHp, "otp": otp},
       onSendProgress: null,
       onReceiveProgress: null,
-      options: null,
+      isJson: true,
+      options: d.Options(
+        contentType: d.Headers.jsonContentType,
+        responseType: d.ResponseType.json,
+      ),
     );
     Map<String, dynamic> result = response!.data;
     if (result['status']['kode'] == 'success') {

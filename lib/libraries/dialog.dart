@@ -32,7 +32,8 @@ Future<void> otpWindow(
                   Text('Verifikasi Kode OTP', style: inter22Bold()),
                   InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        routes.goBack();
+                        routes.loginView();
                       },
                       child: const SizedBox(
                           width: 24, height: 24, child: Icon(Icons.close)))
@@ -49,7 +50,7 @@ Future<void> otpWindow(
                         child: otpInvalid
                             ? const Text("OTP tidak sesuai",
                                 style: TextStyle(color: Colors.red))
-                            : const Text("Segera veifikasi akunmu!")),
+                            : const Text("Segera verifikasi akunmu!")),
                     const Padding(
                         padding: EdgeInsets.only(bottom: 2),
                         child: Text('Masukkan kode OTP yang telah kami')),
@@ -82,16 +83,16 @@ Future<void> otpWindow(
                         cursorColor: Colors.blue,
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(bottom: 18),
-                    //   child: InkWell(
-                    //       onTap: () => registerService.sendOtp(context,
-                    //           emailHp: emailHp),
-                    //       child: Text('Resend OTP',
-                    //           style: TextStyle(
-                    //               decoration: TextDecoration.underline,
-                    //               color: isLoading ? gray : hyperlinkBlue))),
-                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 18),
+                      child: InkWell(
+                          onTap: () => registerService.sendOtp(context,
+                              emailHp: emailHp),
+                          child: Text('Resend OTP',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: isLoading ? gray : hyperlinkBlue))),
+                    ),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: 60,
@@ -100,26 +101,25 @@ Future<void> otpWindow(
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6))),
-                          onPressed: isLoading
-                              ? null
-                              : () async {
-                                  isLoading = true;
-                                  Map<String, dynamic> verifyOtp =
-                                      await registerService.verifyOtp(context,
-                                          emailHp: emailHp, otp: otp);
-                                  if (verifyOtp['status']['kode']) {
-                                    otpInvalid = false;
-                                    log("SUKSES OTP");
-                                    Fluttertoast.showToast(
-                                        msg: jsonEncode(
-                                            verifyOtp['status']['keterangan']));
-                                    await routes.goBack();
-                                    await routes.loginView();
-                                  } else {
-                                    otpInvalid = true;
-                                  }
-                                  isLoading = false;
-                                },
+                          onPressed: () async {
+                            // isLoading = true;
+                            Map<String, dynamic> verifyOtp =
+                                await registerService.verifyOtp(context,
+                                    emailHp: emailHp, otp: otp);
+                            log('VERIFY OTP : $verifyOtp');
+                            if (verifyOtp['status']['kode'] == 'success') {
+                              otpInvalid = false;
+                              log("SUKSES OTP");
+                              Fluttertoast.showToast(
+                                  msg: jsonEncode(
+                                      verifyOtp['status']['keterangan']));
+                              await routes.goBack();
+                              await routes.loginView();
+                            } else {
+                              otpInvalid = true;
+                            }
+                            isLoading = false;
+                          },
                           child: Text('Verifikasi', style: inter18Medium())),
                     ),
                   ],

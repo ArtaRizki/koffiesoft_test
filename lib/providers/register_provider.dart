@@ -18,6 +18,7 @@ class RegisterProvider extends ChangeNotifier {
   String _passwordValue = "";
   String _reTypePasswordValue = "";
   String _tglLahir = "";
+  int _jenisKelamin = 1;
   bool _batalOtpTelepon = false;
 
   int _userId = 0;
@@ -51,6 +52,13 @@ class RegisterProvider extends ChangeNotifier {
 
   set tglLahir(value) {
     _tglLahir = value;
+    notifyListeners();
+  }
+
+  get jenisKelamin => _jenisKelamin;
+
+  set jenisKelamin(value) {
+    _jenisKelamin = value;
     notifyListeners();
   }
 

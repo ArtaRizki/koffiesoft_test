@@ -116,7 +116,7 @@ class _LoginViewState extends State<LoginView> {
   emailNoWaTitle() {
     return const Padding(
       padding: EdgeInsets.only(top: 24),
-      child: Text('Email'),
+      child: Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 
@@ -149,7 +149,10 @@ class _LoginViewState extends State<LoginView> {
     return Padding(
       padding: const EdgeInsets.only(top: 16),
       child: Row(
-        children: [const Text('Password'), Text('*', style: redRequired())],
+        children: [
+          const Text('Password', style: TextStyle(fontWeight: FontWeight.bold)),
+          Text('*', style: redRequired())
+        ],
       ),
     );
   }
@@ -234,7 +237,7 @@ class _LoginViewState extends State<LoginView> {
             },
             child: const Text(
               'Login',
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              style: TextStyle(color: Colors.white, fontSize: 16),
             ),
           );
   }
