@@ -2,12 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:koffiesoft_test/libraries/decoration.dart';
 import 'package:koffiesoft_test/services/register_service.dart';
 import 'package:provider/provider.dart';
 
 import '../libraries/convert_date.dart';
 import '../libraries/dialog.dart';
+import '../libraries/keyboard_actions_config.dart';
 import '../libraries/loading.dart';
 import '../libraries/textstyle.dart';
 import '../libraries/validator.dart';
@@ -28,6 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
   late RegisterProvider rp;
   RegisterService registerService = RegisterService();
   GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+  FocusNode numberNode = FocusNode();
   TextEditingController firstnameC = TextEditingController(),
       lastnameC = TextEditingController(),
       emailC = TextEditingController(),
@@ -262,27 +265,30 @@ class _RegisterViewState extends State<RegisterView> {
   noHpField() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
-      child: TextFormField(
-        controller: noHpC,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: (val) {
-          checkNoHpWa(val);
-          return null;
-        },
-        onChanged: (val) {
-          rp.noHpValue = val;
-          checkNoHpWa(val);
-          setState(() {});
-        },
-        style: inter12(),
-        cursorColor: Colors.blue,
-        decoration: generalDecoration('Masukkan No HP', rp.noHpEmpty),
-        keyboardType: TextInputType.number,
-        scrollPadding: const EdgeInsets.only(bottom: 52),
-        inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-        ],
-      ),
+      child: KeyboardActions(
+          config: buildConfigKeyboardClose(context, numberNode),
+          child: TextFormField(
+            focusNode: numberNode,
+            controller: noHpC,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            validator: (val) {
+              checkNoHpWa(val);
+              return null;
+            },
+            onChanged: (val) {
+              rp.noHpValue = val;
+              checkNoHpWa(val);
+              setState(() {});
+            },
+            style: inter12(),
+            cursorColor: Colors.blue,
+            decoration: generalDecoration('Masukkan No HP', rp.noHpEmpty),
+            keyboardType: TextInputType.number,
+            scrollPadding: const EdgeInsets.only(bottom: 52),
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+            ],
+          )),
     );
   }
 
@@ -546,14 +552,17 @@ class _RegisterViewState extends State<RegisterView> {
         : InkWell(
             // onTap: () => null,
             onTap: () => routes.loginView(),
-            child: const Align(
-              alignment: Alignment.center,
-              child: Text(
-                "Sudah Punya Akun ? masuk di sini",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 16,
-                  decoration: TextDecoration.underline,
+            child: const Padding(
+              padding: EdgeInsets.only(top: 16),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "Sudah Punya Akun ? masuk di sini",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 16,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
             ),
@@ -742,7 +751,7 @@ class _RegisterViewState extends State<RegisterView> {
         },
         child: const Text(
           'Pilih',
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          style: TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
     );

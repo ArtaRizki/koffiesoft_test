@@ -19,6 +19,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   LoginService loginService = LoginService();
   late LoginProvider lp;
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -26,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
     super.initState();
   }
 
-  TextEditingController emailNoWaC = TextEditingController(),
+  TextEditingController emailC = TextEditingController(),
       passwordC = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -36,58 +37,63 @@ class _LoginViewState extends State<LoginView> {
     return Consumer<LoginProvider>(
       builder: (context, lv, child) {
         return SafeArea(
-          top: false,
           child: Scaffold(
             backgroundColor: Colors.white,
             body: GestureDetector(
               onTap: () {},
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                    ...text(),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
-                            height: MediaQuery.of(context).size.height * 0.6,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 16),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                // padding: const EdgeInsets.symmetric(horizontal: 16),
-                                children: [
-                                  emailNoWaTitle(),
-                                  emailNoWaField(),
-                                  passwordTitle(),
-                                  passwordField(),
-                                  loginButton(),
-                                  lp.isLoading
-                                      ? const SizedBox()
-                                      : const Flexible(
-                                          child: SizedBox(height: 2)),
-                                  lp.isLoading
-                                      ? const SizedBox()
-                                      : const Flexible(
-                                          child: SizedBox(height: 16)),
-                                  registerButton(),
-                                  loading(),
-                                ],
+                child: Form(
+                  key: loginFormKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.1),
+                      ...text(),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                              height: MediaQuery.of(context).size.height * 0.6,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 16),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  // padding: const EdgeInsets.symmetric(horizontal: 16),
+                                  children: [
+                                    emailTitle(),
+                                    emailField(),
+                                    emailErrorText(),
+                                    passwordTitle(),
+                                    passwordField(),
+                                    passwordErrorText(),
+                                    loginButton(),
+                                    lp.isLoading
+                                        ? const SizedBox()
+                                        : const Flexible(
+                                            child: SizedBox(height: 2)),
+                                    lp.isLoading
+                                        ? const SizedBox()
+                                        : const Flexible(
+                                            child: SizedBox(height: 16)),
+                                    registerButton(),
+                                    loading(),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -113,36 +119,40 @@ class _LoginViewState extends State<LoginView> {
     ];
   }
 
-  emailNoWaTitle() {
+  emailTitle() {
     return const Padding(
       padding: EdgeInsets.only(top: 24),
       child: Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 
-  emailNoWaField() {
+  emailField() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
         enabled: !lp.isLoading,
-        controller: emailNoWaC,
+        controller: emailC,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (val) {
-          checkEmailNoWa(val);
+          checkEmail(val);
           return null;
         },
         onChanged: (val) {
-          lp.setEmailNoWaValue = val;
-          checkEmailNoWa(val);
+          lp.emailValue = val;
+          checkEmail(val);
           setState(() {});
         },
-        // style: inter12(),
+        style: inter12(),
         cursorColor: Colors.blue,
-        decoration:
-            generalDecoration('Masukkan Email/No WA', lp.emailNoWaEmpty),
+        decoration: generalDecoration('Masukkan Email', lp.emailEmpty),
         scrollPadding: const EdgeInsets.only(bottom: 52),
       ),
     );
+  }
+
+  emailErrorText() {
+    return Text(lp.emailEmpty ? lp.emailError : "",
+        style: redValidateErrorRequired());
   }
 
   passwordTitle() {
@@ -159,7 +169,7 @@ class _LoginViewState extends State<LoginView> {
 
   passwordField() {
     return Padding(
-      padding: const EdgeInsets.only(top: 5, bottom: 24),
+      padding: const EdgeInsets.only(top: 5, bottom: 5),
       child: TextFormField(
         enabled: !lp.isLoading,
         obscureText: lp.visiblePassword,
@@ -170,11 +180,11 @@ class _LoginViewState extends State<LoginView> {
           return null;
         },
         onChanged: (val) {
-          lp.setPasswordValue = val;
+          lp.passwordValue = val;
           checkPassword(val);
           setState(() {});
         },
-        // style: inter12(),
+        style: inter12(),
         cursorColor: Colors.blue,
         decoration: InputDecoration(
             suffixIcon: IconButton(
@@ -205,6 +215,14 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
+  passwordErrorText() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 24),
+      child: Text(lp.passwordEmpty ? lp.passwordError : "",
+          style: redValidateErrorRequired()),
+    );
+  }
+
   Widget loginButton() {
     return lp.isLoading
         ? const SizedBox()
@@ -220,20 +238,25 @@ class _LoginViewState extends State<LoginView> {
                     Size(MediaQuery.of(context).size.width, 40)),
                 backgroundColor: MaterialStateProperty.all(Colors.blue)),
             onPressed: () async {
-              lp.isLoading = true;
-              Map<String, dynamic> result =
-                  await loginService.loginUser(context);
-              log("LOGIN RESULT : $result");
-              if (result['status']['kode'] == 'success') {
-                emailNoWaC.text = "";
-                passwordC.text = "";
-                prefs.setString('token', result['access_token']);
-                await routes.welcomeView();
-              } else {
-                emailNoWaC.text = "";
-                passwordC.text = "";
+              FocusManager.instance.primaryFocus?.unfocus();
+              bool validate = loginFormKey.currentState!.validate();
+              setState(() {});
+              if (validate && !lp.emailEmpty && !lp.passwordEmpty) {
+                lp.isLoading = true;
+                Map<String, dynamic> result =
+                    await loginService.loginUser(context);
+                log("LOGIN RESULT : $result");
+                if (result['status']['kode'] == 'success') {
+                  emailC.text = "";
+                  passwordC.text = "";
+                  prefs.setString('token', result['access_token']);
+                  await routes.welcomeView();
+                } else {
+                  emailC.text = "";
+                  passwordC.text = "";
+                }
+                lp.isLoading = false;
               }
-              lp.isLoading = false;
             },
             child: const Text(
               'Login',
@@ -282,15 +305,15 @@ class _LoginViewState extends State<LoginView> {
           );
   }
 
-  checkEmailNoWa(String? val) {
-    String? msg = loginEmailNoWa(val);
-    lp.setEmailNoWaEmpty = msg != null;
-    lp.setEmailNoWaError = msg ?? "";
+  checkEmail(String? val) {
+    String? msg = loginEmail(val);
+    lp.emailEmpty = msg != null;
+    lp.emailError = msg ?? "";
   }
 
   checkPassword(String? val) {
     String? msg = registerPassword(val);
-    lp.setPasswordEmpty = msg != null;
-    lp.setPasswordError = msg ?? "";
+    lp.passwordEmpty = msg != null;
+    lp.passwordError = msg ?? "";
   }
 }

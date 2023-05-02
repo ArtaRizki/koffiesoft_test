@@ -27,18 +27,11 @@ inter12Black87() => const TextStyle(fontSize: 12, color: Colors.black87);
 
 inter14NormalGray() => const TextStyle(fontSize: 14, color: Colors.grey);
 
-inter14MediumPGreen() =>
-    TextStyle(fontSize: 14, color: primaryGreen, fontWeight: FontWeight.w500);
-
 inter14Medium() => const TextStyle(
     fontSize: 14, color: Colors.black, fontWeight: FontWeight.w500);
 
 inter14MediumWhite() => const TextStyle(
     fontSize: 14, color: Colors.white, fontWeight: FontWeight.w500);
-
-inter14MediumGreen() =>
-    TextStyle(fontSize: 14, color: tertiaryGreen, fontWeight: FontWeight.w500);
-
 inter14BoldWhite() => const TextStyle(
     fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold);
 
@@ -50,15 +43,6 @@ inter14MediumGray2() =>
 
 inter14MediumRed() =>
     TextStyle(fontSize: 14, color: red, fontWeight: FontWeight.w500);
-
-inter14MediumMenungguPembayaran() => TextStyle(
-    fontSize: 14, color: menungguPembayaranTextC, fontWeight: FontWeight.w500);
-inter14MediumAktif() =>
-    TextStyle(fontSize: 14, color: aktifTextC, fontWeight: FontWeight.w500);
-inter14MediumTidakAktif() => TextStyle(
-    fontSize: 14, color: tidakAktifTextC, fontWeight: FontWeight.w500);
-inter14MediumDibatalkan() => TextStyle(
-    fontSize: 14, color: dibatalkanTextC, fontWeight: FontWeight.w500);
 
 inter14Bold() => const TextStyle(
     fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold);
@@ -110,9 +94,6 @@ inter22Bold() => const TextStyle(
     fontSize: 22, color: Colors.black, fontWeight: FontWeight.w700);
 
 inter28Bold() => const TextStyle(fontSize: 28, fontWeight: FontWeight.bold);
-
-inter22BoldGreen() =>
-    TextStyle(fontSize: 22, color: green5, fontWeight: FontWeight.bold);
 
 redValidateErrorRequired() => const TextStyle(fontSize: 13, color: Colors.red);
 

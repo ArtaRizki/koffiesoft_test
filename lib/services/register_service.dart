@@ -7,7 +7,6 @@ import 'package:koffiesoft_test/providers/register_provider.dart';
 import 'package:provider/provider.dart';
 import '../consts/url.dart';
 import '../libraries/dio_client.dart';
-import '../models/user_model.dart';
 import '../providers/user_provider.dart';
 
 class RegisterService {

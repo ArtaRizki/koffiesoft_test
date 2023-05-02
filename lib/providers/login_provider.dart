@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginProvider extends ChangeNotifier {
   bool _isLoading = false;
-  String _emailNoWaValue = "";
+  String _emailValue = "";
   String _passwordValue = "";
-  bool _emailNoWaEmpty = false;
+  bool _emailEmpty = false;
   bool _visiblePassword = true;
-  String _emailNoWaError = "";
+  String _emailError = "";
   String _passwordError = "";
   bool _passwordEmpty = false;
 
@@ -17,15 +16,21 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get emailNoWaValue => _emailNoWaValue;
-  set setEmailNoWaValue(String value) => _emailNoWaValue = value;
+  String get emailValue => _emailValue;
+  set emailValue(value) {
+    _emailValue = value;
+  }
 
   String get passwordValue => _passwordValue;
 
-  set setPasswordValue(String value) => _passwordValue = value;
+  set passwordValue(value) {
+    _passwordValue = value;
+  }
 
-  bool get emailNoWaEmpty => _emailNoWaEmpty;
-  set setEmailNoWaEmpty(bool value) => _emailNoWaEmpty = value;
+  bool get emailEmpty => _emailEmpty;
+  set emailEmpty(value) {
+    _emailEmpty = value;
+  }
 
   bool get visiblePassword => _visiblePassword;
 
@@ -34,12 +39,18 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get emailNoWaError => _emailNoWaError;
-  set setEmailNoWaError(String value) => _emailNoWaError = value;
+  String get emailError => _emailError;
+  set emailError(value) {
+    _emailError = value;
+  }
 
   String get passwordError => _passwordError;
-  set setPasswordError(String value) => _passwordError = value;
+  set passwordError(value) {
+    _passwordError = value;
+  }
 
   bool get passwordEmpty => _passwordEmpty;
-  set setPasswordEmpty(bool value) => _passwordEmpty = value;
+  set passwordEmpty(value) {
+    _passwordEmpty = value;
+  }
 }

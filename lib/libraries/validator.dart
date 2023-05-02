@@ -119,10 +119,16 @@ registerNoNpwp(String? val) {
 }
 
 // login view
-loginEmailNoWa(String? val) {
+loginEmail(String? val) {
   val = val.toString().trim();
   if (val == "" || val.isEmpty || val == "null") {
-    return "Email/No WA belum diisi";
+    return "Email belum diisi";
+  }
+  if (val == "Email telah digunakan") {
+    return val;
+  }
+  if (val.isNotEmpty && !s_validator.isEmail(val)) {
+    return "Email tidak valid";
   }
   return null;
 }

@@ -18,20 +18,20 @@ class LoginService {
     final lp = Provider.of<LoginProvider>(context, listen: false);
     lp.isLoading = true;
 
-    if (!lp.emailNoWaEmpty && !lp.passwordEmpty) {
+    if (!lp.emailEmpty && !lp.passwordEmpty) {
       // try {
       d.Response<dynamic>? response = await dio.requestPost(
         loginPath,
         // {"Email": "081217240058", "Password": "1234"},
-        {"username": lp.emailNoWaValue, "password": lp.passwordValue},
+        {"username": lp.emailValue, "password": lp.passwordValue},
         onSendProgress: null,
         onReceiveProgress: null,
         options: null,
       );
       Map<String, dynamic> result = response!.data;
       if (result['status']['kode'] == 'success') {
-        lp.setEmailNoWaValue = "";
-        lp.setPasswordValue = "";
+        lp.emailValue = "";
+        lp.passwordValue = "";
         log("LOGIN RESULT : ${jsonEncode(result['data'])}");
         up.user = userModelFromJson(jsonEncode(result['data']));
         log("USER EMAIL : ${up.user.email}");

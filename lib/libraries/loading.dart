@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'color.dart';
-
 Widget loadingWidget =
     const Center(child: CircularProgressIndicator(strokeWidth: 2));
 

@@ -1,8 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:koffiesoft_test/main.dart';
 import 'package:koffiesoft_test/models/user_model.dart';
 import 'package:provider/provider.dart';
