@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'dart:async';
@@ -166,8 +167,8 @@ class DioClient<T> {
       Dio dio = Dio(baseOptions);
       dio.interceptors.add(
         PrettyDioLogger(
-          request: true, //true,
-          requestHeader: true,
+          request: false, //true,
+          requestHeader: false,
           requestBody: true,
           responseHeader: true,
           responseBody: true, //true,
@@ -201,6 +202,7 @@ class DioClient<T> {
       }
       return response;
     } on DioError catch (e) {
+      Fluttertoast.showToast(msg: e.error.toString());
       String log = "Error : " +
           '\r\n' +
           url +
@@ -208,6 +210,8 @@ class DioClient<T> {
           (param).toString() +
           '\r\n' +
           e.type.toString() +
+          ' ' +
+          e.response.toString() +
           ' ' +
           e.error.toString();
       _savetoLog(log);

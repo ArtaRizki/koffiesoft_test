@@ -265,30 +265,28 @@ class _RegisterViewState extends State<RegisterView> {
   noHpField() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
-      child: KeyboardActions(
-          config: buildConfigKeyboardClose(context, numberNode),
-          child: TextFormField(
-            focusNode: numberNode,
-            controller: noHpC,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (val) {
-              checkNoHpWa(val);
-              return null;
-            },
-            onChanged: (val) {
-              rp.noHpValue = val;
-              checkNoHpWa(val);
-              setState(() {});
-            },
-            style: inter12(),
-            cursorColor: Colors.blue,
-            decoration: generalDecoration('Masukkan No HP', rp.noHpEmpty),
-            keyboardType: TextInputType.number,
-            scrollPadding: const EdgeInsets.only(bottom: 52),
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-            ],
-          )),
+      child: TextFormField(
+        focusNode: numberNode,
+        controller: noHpC,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (val) {
+          checkNoHpWa(val);
+          return null;
+        },
+        onChanged: (val) {
+          rp.noHpValue = val;
+          checkNoHpWa(val);
+          setState(() {});
+        },
+        style: inter12(),
+        cursorColor: Colors.blue,
+        decoration: generalDecoration('Masukkan No HP', rp.noHpEmpty),
+        keyboardType: TextInputType.number,
+        scrollPadding: const EdgeInsets.only(bottom: 52),
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+        ],
+      ),
     );
   }
 
@@ -589,26 +587,19 @@ class _RegisterViewState extends State<RegisterView> {
                 Size(MediaQuery.of(context).size.width, 40)),
             backgroundColor: MaterialStateProperty.all(Colors.blue)),
         onPressed: () async {
-          rp.isLoading = true;
-          FocusManager.instance.primaryFocus?.unfocus();
-          log("RETYPE : ${rp.reTypePasswordValue}");
-          log("PASSWORD : ${rp.passwordValue}");
-          registerFormKey.currentState!.validate();
+          // rp.isLoading = true;
+          // FocusManager.instance.primaryFocus?.unfocus();
+          // log("RETYPE : ${rp.reTypePasswordValue}");
+          // log("PASSWORD : ${rp.passwordValue}");
+          bool key = registerFormKey.currentState!.validate();
           checkReTypePassword(rp.reTypePasswordValue, rp.passwordValue, true);
-          Map<String, dynamic> result =
-              await registerService.registerUser(context);
-
-          // log("LOGIN RESULT : $result");
-          if (result['status']['kode'] == 'success') {
-            // firstnameC.text = "";
-            // lastnameC.text = "";
-            // tanggalLahirC.text = "";
-            // passwordC.text = "";
-            // reTypePasswordC.text = "";
-            await otpWindow(navigatorKey.currentState!.context,
-                emailHp: emailC.text);
-            // await routes.loginView();
-          } else {}
+          if (rp.reTypePasswordValue == rp.passwordValue && key) {
+            Map<String, dynamic> result =
+                await registerService.registerUser(context);
+            if (result['status']['kode'] == 'success') {
+              await otpWindow(context, emailHp: emailC.text);
+            }
+          }
           rp.isLoading = false;
         },
         child: const Text("Daftar"),
