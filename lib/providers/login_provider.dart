@@ -1,56 +1,61 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:dio/dio.dart' as d;
+import 'package:fluttertoast/fluttertoast.dart';
+import '../consts/url.dart';
+import '../libraries/dio_client.dart';
+import '../models/login_state.dart';
 
-class LoginProvider extends ChangeNotifier {
-  bool _isLoading = false;
-  String _emailValue = "";
-  String _passwordValue = "";
-  bool _emailEmpty = false;
-  bool _visiblePassword = true;
-  String _emailError = "";
-  String _passwordError = "";
-  bool _passwordEmpty = false;
+class LoginProvider extends StateNotifier<LoginState> {
+  LoginProvider() : super(const LoginState.noError());
 
-  bool get isLoading => _isLoading;
-  set isLoading(value) {
-    _isLoading = value;
-    notifyListeners();
-  }
+  static final DioClient dio = DioClient();
 
-  String get emailValue => _emailValue;
-  set emailValue(value) {
-    _emailValue = value;
-  }
+  Future<Map<String, dynamic>> loginUser(BuildContext context) async {
+    final bool emailEmpty =
+            state.maybeWhen(loading: () => true, orElse: () => false),
+        passwordEmpty =
+            state.maybeWhen(loading: () => true, orElse: () => false);
+    final String username = state.maybeWhen(
+        emailValue: (emailValue) => emailValue, orElse: () => "");
+    final String password = state.maybeWhen(
+        passwordValue: (passwordValue) => passwordValue, orElse: () => "");
 
-  String get passwordValue => _passwordValue;
-
-  set passwordValue(value) {
-    _passwordValue = value;
-  }
-
-  bool get emailEmpty => _emailEmpty;
-  set emailEmpty(value) {
-    _emailEmpty = value;
-  }
-
-  bool get visiblePassword => _visiblePassword;
-
-  setVisiblePassword() {
-    _visiblePassword = !_visiblePassword;
-    notifyListeners();
-  }
-
-  String get emailError => _emailError;
-  set emailError(value) {
-    _emailError = value;
-  }
-
-  String get passwordError => _passwordError;
-  set passwordError(value) {
-    _passwordError = value;
-  }
-
-  bool get passwordEmpty => _passwordEmpty;
-  set passwordEmpty(value) {
-    _passwordEmpty = value;
+    if (!emailEmpty && !passwordEmpty) {
+      // try {
+      d.Response<dynamic>? response = await dio.requestPost(
+        loginPath,
+        {"username": username, "password": password},
+        onSendProgress: null,
+        onReceiveProgress: null,
+        options: null,
+      );
+      Map<String, dynamic> result = response!.data;
+      if (result['status']['kode'] == 'success') {
+        state = const LoginState.emailValue("");
+        state = const LoginState.passwordValue("");
+        log("LOGIN RESULT : ${jsonEncode(result['data'])}");
+        // up.user = userModelFromJson(jsonEncode(result['data']));
+        // log("USER EMAIL : ${up.user.email}");
+        // log("USER ID : ${up.user.id}");
+        Fluttertoast.showToast(msg: "Login Sukses");
+        state = const LoginState.noError();
+        log("LOGIN RESULT 2 : ${jsonEncode(result)}");
+        return result;
+      } else {
+        Fluttertoast.showToast(msg: jsonEncode(result['status']['keterangan']));
+        state = const LoginState.noError();
+        return {};
+      }
+      // } catch (e) {
+      //   lp.isLoading = false;
+      //   return null;
+      // }
+    } else {
+      state = const LoginState.noError();
+      return {};
+    }
   }
 }
