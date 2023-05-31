@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koffiesoft_test/views/register_view.dart';
 import 'package:koffiesoft_test/views/welcome_view.dart';
+import '../builder/login_builder.dart';
 import '../main.dart';
 import '../views/login_view.dart';
 
@@ -24,7 +25,7 @@ class Routes {
         navigatorKey.currentState!.context,
         PageRouteBuilder(
             pageBuilder: ((context, animation, secondaryAnimation) =>
-                const LoginView()),
+                LoginBuilder()),
             transitionDuration: const Duration(seconds: 0),
             reverseTransitionDuration: Duration.zero));
   }

@@ -13,5 +13,6 @@ class LoginState with _$LoginState {
   const factory LoginState.passwordValue(String passwordValue) = _PasswordValue;
   const factory LoginState.passwordEmpty() = _PasswordEmpty;
   const factory LoginState.passwordError(String passwordError) = _PasswordError;
-  const factory LoginState.visiblePassword() = _VisiblePassword;
+  const factory LoginState.visiblePassword(bool visiblePasswordValue) =
+      _VisiblePassword;
 }

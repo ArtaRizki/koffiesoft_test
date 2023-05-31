@@ -27,7 +27,7 @@ mixin _$LoginState {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,7 +41,7 @@ mixin _$LoginState {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +55,7 @@ mixin _$LoginState {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -168,7 +168,7 @@ class _$_NoError implements _NoError {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return noError();
   }
@@ -185,7 +185,7 @@ class _$_NoError implements _NoError {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return noError?.call();
   }
@@ -202,7 +202,7 @@ class _$_NoError implements _NoError {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (noError != null) {
@@ -343,7 +343,7 @@ class _$_Error implements _Error {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return error(errorText);
   }
@@ -360,7 +360,7 @@ class _$_Error implements _Error {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return error?.call(errorText);
   }
@@ -377,7 +377,7 @@ class _$_Error implements _Error {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -497,7 +497,7 @@ class _$_Loading implements _Loading {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return loading();
   }
@@ -514,7 +514,7 @@ class _$_Loading implements _Loading {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return loading?.call();
   }
@@ -531,7 +531,7 @@ class _$_Loading implements _Loading {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -674,7 +674,7 @@ class _$_EmailValue implements _EmailValue {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return emailValue(this.emailValue);
   }
@@ -691,7 +691,7 @@ class _$_EmailValue implements _EmailValue {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return emailValue?.call(this.emailValue);
   }
@@ -708,7 +708,7 @@ class _$_EmailValue implements _EmailValue {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (emailValue != null) {
@@ -829,7 +829,7 @@ class _$_EmailEmpty implements _EmailEmpty {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return emailEmpty();
   }
@@ -846,7 +846,7 @@ class _$_EmailEmpty implements _EmailEmpty {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return emailEmpty?.call();
   }
@@ -863,7 +863,7 @@ class _$_EmailEmpty implements _EmailEmpty {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (emailEmpty != null) {
@@ -1006,7 +1006,7 @@ class _$_EmailError implements _EmailError {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return emailError(this.emailError);
   }
@@ -1023,7 +1023,7 @@ class _$_EmailError implements _EmailError {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return emailError?.call(this.emailError);
   }
@@ -1040,7 +1040,7 @@ class _$_EmailError implements _EmailError {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (emailError != null) {
@@ -1188,7 +1188,7 @@ class _$_PasswordValue implements _PasswordValue {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return passwordValue(this.passwordValue);
   }
@@ -1205,7 +1205,7 @@ class _$_PasswordValue implements _PasswordValue {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return passwordValue?.call(this.passwordValue);
   }
@@ -1222,7 +1222,7 @@ class _$_PasswordValue implements _PasswordValue {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (passwordValue != null) {
@@ -1343,7 +1343,7 @@ class _$_PasswordEmpty implements _PasswordEmpty {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return passwordEmpty();
   }
@@ -1360,7 +1360,7 @@ class _$_PasswordEmpty implements _PasswordEmpty {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return passwordEmpty?.call();
   }
@@ -1377,7 +1377,7 @@ class _$_PasswordEmpty implements _PasswordEmpty {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (passwordEmpty != null) {
@@ -1520,7 +1520,7 @@ class _$_PasswordError implements _PasswordError {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
     return passwordError(this.passwordError);
   }
@@ -1537,7 +1537,7 @@ class _$_PasswordError implements _PasswordError {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
     return passwordError?.call(this.passwordError);
   }
@@ -1554,7 +1554,7 @@ class _$_PasswordError implements _PasswordError {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (passwordError != null) {
@@ -1633,6 +1633,8 @@ abstract class _$$_VisiblePasswordCopyWith<$Res> {
   factory _$$_VisiblePasswordCopyWith(
           _$_VisiblePassword value, $Res Function(_$_VisiblePassword) then) =
       __$$_VisiblePasswordCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool visiblePasswordValue});
 }
 
 /// @nodoc
@@ -1642,26 +1644,51 @@ class __$$_VisiblePasswordCopyWithImpl<$Res>
   __$$_VisiblePasswordCopyWithImpl(
       _$_VisiblePassword _value, $Res Function(_$_VisiblePassword) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? visiblePasswordValue = null,
+  }) {
+    return _then(_$_VisiblePassword(
+      null == visiblePasswordValue
+          ? _value.visiblePasswordValue
+          : visiblePasswordValue // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_VisiblePassword implements _VisiblePassword {
-  const _$_VisiblePassword();
+  const _$_VisiblePassword(this.visiblePasswordValue);
+
+  @override
+  final bool visiblePasswordValue;
 
   @override
   String toString() {
-    return 'LoginState.visiblePassword()';
+    return 'LoginState.visiblePassword(visiblePasswordValue: $visiblePasswordValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_VisiblePassword);
+        (other.runtimeType == runtimeType &&
+            other is _$_VisiblePassword &&
+            (identical(other.visiblePasswordValue, visiblePasswordValue) ||
+                other.visiblePasswordValue == visiblePasswordValue));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, visiblePasswordValue);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_VisiblePasswordCopyWith<_$_VisiblePassword> get copyWith =>
+      __$$_VisiblePasswordCopyWithImpl<_$_VisiblePassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1675,9 +1702,9 @@ class _$_VisiblePassword implements _VisiblePassword {
     required TResult Function(String passwordValue) passwordValue,
     required TResult Function() passwordEmpty,
     required TResult Function(String passwordError) passwordError,
-    required TResult Function() visiblePassword,
+    required TResult Function(bool visiblePasswordValue) visiblePassword,
   }) {
-    return visiblePassword();
+    return visiblePassword(visiblePasswordValue);
   }
 
   @override
@@ -1692,9 +1719,9 @@ class _$_VisiblePassword implements _VisiblePassword {
     TResult? Function(String passwordValue)? passwordValue,
     TResult? Function()? passwordEmpty,
     TResult? Function(String passwordError)? passwordError,
-    TResult? Function()? visiblePassword,
+    TResult? Function(bool visiblePasswordValue)? visiblePassword,
   }) {
-    return visiblePassword?.call();
+    return visiblePassword?.call(visiblePasswordValue);
   }
 
   @override
@@ -1709,11 +1736,11 @@ class _$_VisiblePassword implements _VisiblePassword {
     TResult Function(String passwordValue)? passwordValue,
     TResult Function()? passwordEmpty,
     TResult Function(String passwordError)? passwordError,
-    TResult Function()? visiblePassword,
+    TResult Function(bool visiblePasswordValue)? visiblePassword,
     required TResult orElse(),
   }) {
     if (visiblePassword != null) {
-      return visiblePassword();
+      return visiblePassword(visiblePasswordValue);
     }
     return orElse();
   }
@@ -1775,5 +1802,11 @@ class _$_VisiblePassword implements _VisiblePassword {
 }
 
 abstract class _VisiblePassword implements LoginState {
-  const factory _VisiblePassword() = _$_VisiblePassword;
+  const factory _VisiblePassword(final bool visiblePasswordValue) =
+      _$_VisiblePassword;
+
+  bool get visiblePasswordValue;
+  @JsonKey(ignore: true)
+  _$$_VisiblePasswordCopyWith<_$_VisiblePassword> get copyWith =>
+      throw _privateConstructorUsedError;
 }

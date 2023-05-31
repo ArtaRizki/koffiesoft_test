@@ -6,6 +6,7 @@ import 'package:dio/dio.dart' as d;
 import 'package:fluttertoast/fluttertoast.dart';
 import '../consts/url.dart';
 import '../libraries/dio_client.dart';
+import '../libraries/validator.dart';
 import '../models/login_state.dart';
 
 class LoginProvider extends StateNotifier<LoginState> {
@@ -13,7 +14,12 @@ class LoginProvider extends StateNotifier<LoginState> {
 
   static final DioClient dio = DioClient();
 
-  Future<Map<String, dynamic>> loginUser(BuildContext context) async {
+  Future<void> changeLoading() async {
+    state = const LoginState.loading();
+  }
+
+  Future<Map<String, dynamic>> loginUser(
+      BuildContext context, String? val) async {
     final bool emailEmpty =
             state.maybeWhen(loading: () => true, orElse: () => false),
         passwordEmpty =
@@ -22,7 +28,13 @@ class LoginProvider extends StateNotifier<LoginState> {
         emailValue: (emailValue) => emailValue, orElse: () => "");
     final String password = state.maybeWhen(
         passwordValue: (passwordValue) => passwordValue, orElse: () => "");
-
+    final String emailError = state.maybeWhen(
+        emailError: (emailError) => emailError, orElse: () => "");
+    checkEmail(val, emailEmpty, emailError);
+    log("EMAIL KOSONG : $emailEmpty");
+    log("EMAIL KOSONG : $emailError");
+    log("PASSWORD KOSONG : $passwordEmpty");
+    state = const LoginState.loading();
     if (!emailEmpty && !passwordEmpty) {
       // try {
       d.Response<dynamic>? response = await dio.requestPost(
@@ -57,5 +69,29 @@ class LoginProvider extends StateNotifier<LoginState> {
       state = const LoginState.noError();
       return {};
     }
+  }
+
+  checkEmail(String? val, bool emailEmpty, String emailError) {
+    String? msg = loginEmail(val);
+    emailEmpty = msg != null;
+    if (emailEmpty) {
+      state = const LoginState.emailEmpty();
+    }
+    emailError = msg ?? "";
+    log("CHECK EMAIL2 : $emailEmpty");
+    log("CHECK EMAIL2 : $emailError");
+    log("CHECK EMAIL2 : ${state.maybeWhen(emailEmpty: () => true, orElse: () => false)}");
+
+    state = LoginState.emailError(emailError);
+  }
+
+  checkPassword(String? val, bool passwordEmpty, String passwordError) {
+    String? msg = registerPassword(val);
+    passwordEmpty = msg != null;
+    passwordError = msg ?? "";
+  }
+
+  changeVisiblePassword(bool val) {
+    state = LoginState.visiblePassword(val);
   }
 }

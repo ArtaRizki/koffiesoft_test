@@ -43,32 +43,29 @@ class _WelcomeViewState extends State<WelcomeView> {
   }
 
   Widget logoutBotton() {
-    return lp.isLoading
-        ? const SizedBox()
-        : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith((states) =>
-                      states.contains(MaterialState.pressed)
-                          ? Colors.blueGrey
-                          : null),
-                  shadowColor:
-                      MaterialStateProperty.all<Color>(Colors.transparent),
-                  fixedSize: MaterialStateProperty.all(
-                      Size(MediaQuery.of(context).size.width, 40)),
-                  backgroundColor: MaterialStateProperty.all(Colors.blue)),
-              onPressed: () async {
-                routes.loginView();
-                prefs.remove("user");
-                prefs.remove("access_token");
-                lp.isLoading = false;
-              },
-              child: const Text(
-                'Logout',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-            ),
-          );
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ElevatedButton(
+        style: ButtonStyle(
+            overlayColor: MaterialStateProperty.resolveWith((states) =>
+                states.contains(MaterialState.pressed)
+                    ? Colors.blueGrey
+                    : null),
+            shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+            fixedSize: MaterialStateProperty.all(
+                Size(MediaQuery.of(context).size.width, 40)),
+            backgroundColor: MaterialStateProperty.all(Colors.blue)),
+        onPressed: () async {
+          routes.loginView();
+          prefs.remove("user");
+          prefs.remove("access_token");
+          // lp.isLoading = false;
+        },
+        child: const Text(
+          'Logout',
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
+      ),
+    );
   }
 }

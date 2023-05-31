@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:koffiesoft_test/providers/login_provider.dart';
-import 'package:koffiesoft_test/providers/register_provider.dart';
-import 'package:koffiesoft_test/providers/user_provider.dart';
-import 'package:koffiesoft_test/views/login_view.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:koffiesoft_test/builder/login_builder.dart';
 import 'package:koffiesoft_test/views/welcome_view.dart';
-import 'package:provider/provider.dart';
 import 'libraries/routes.dart';
 import 'libraries/sharedpref.dart';
 
@@ -16,13 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await prefs.init();
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => RegisterProvider()),
-        ChangeNotifierProvider(create: (_) => UserProvider()),
-      ],
-      child: const MyApp(),
-    ),
+    const ProviderScope(child: MyApp()),
   );
 }
 
@@ -47,6 +38,6 @@ class MyApp extends StatelessWidget {
       return const WelcomeView();
     }
 
-    return const LoginView();
+    return const LoginBuilder();
   }
 }
