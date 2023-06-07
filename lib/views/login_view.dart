@@ -27,11 +27,11 @@ class LoginView extends StatefulWidget {
     required this.changeVisiblePassword,
     this.emailError = "",
     this.passwordError = "",
-    this.username = "",
+    this.email = "",
     this.password = "",
   });
   final bool isLoading, emailEmpty, passwordEmpty, visiblePassword;
-  final String emailError, passwordError, username, password;
+  final String emailError, passwordError, email, password;
   final Function(String) login;
   final Function(bool) changeVisiblePassword;
   final Function(String, bool, String) checkEmail, checkPassword;
@@ -84,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
                               // padding: const EdgeInsets.symmetric(horizontal: 16),
                               children: [
                                 emailTitle(),
-                                emailField(widget.isLoading, widget.username,
+                                emailField(widget.isLoading, widget.email,
                                     widget.emailEmpty, widget.emailError),
                                 emailErrorText(
                                     widget.emailEmpty, widget.emailError),
@@ -225,7 +225,7 @@ class _LoginViewState extends State<LoginView> {
         controller: emailC,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (val) {
-          widget.checkEmail(val!, emailEmpty, emailError);
+          // widget.checkEmail(val!, emailEmpty, emailError);
           return null;
         },
         onChanged: (val) {
@@ -235,7 +235,7 @@ class _LoginViewState extends State<LoginView> {
         },
         style: inter12(),
         cursorColor: Colors.blue,
-        decoration: generalDecoration('Masukkan Email', emailEmpty),
+        decoration: generalDecoration('Masukkan Email', emailError),
         scrollPadding: const EdgeInsets.only(bottom: 52),
       ),
     );

@@ -16,91 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) =>
+  FieldModel get email => throw _privateConstructorUsedError;
+  FieldModel get password => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get visiblePassword => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LoginStateCopyWith<LoginState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -109,6 +31,15 @@ abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
+  @useResult
+  $Res call(
+      {FieldModel email,
+      FieldModel password,
+      bool isLoading,
+      bool visiblePassword});
+
+  $FieldModelCopyWith<$Res> get email;
+  $FieldModelCopyWith<$Res> get password;
 }
 
 /// @nodoc
@@ -120,1540 +51,104 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? isLoading = null,
+    Object? visiblePassword = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as FieldModel,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as FieldModel,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      visiblePassword: null == visiblePassword
+          ? _value.visiblePassword
+          : visiblePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FieldModelCopyWith<$Res> get email {
+    return $FieldModelCopyWith<$Res>(_value.email, (value) {
+      return _then(_value.copyWith(email: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FieldModelCopyWith<$Res> get password {
+    return $FieldModelCopyWith<$Res>(_value.password, (value) {
+      return _then(_value.copyWith(password: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_NoErrorCopyWith<$Res> {
-  factory _$$_NoErrorCopyWith(
-          _$_NoError value, $Res Function(_$_NoError) then) =
-      __$$_NoErrorCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_NoErrorCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_NoError>
-    implements _$$_NoErrorCopyWith<$Res> {
-  __$$_NoErrorCopyWithImpl(_$_NoError _value, $Res Function(_$_NoError) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_NoError implements _NoError {
-  const _$_NoError();
-
+abstract class _$$_LoginStateCopyWith<$Res>
+    implements $LoginStateCopyWith<$Res> {
+  factory _$$_LoginStateCopyWith(
+          _$_LoginState value, $Res Function(_$_LoginState) then) =
+      __$$_LoginStateCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'LoginState.noError()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return noError();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return noError?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (noError != null) {
-      return noError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return noError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return noError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (noError != null) {
-      return noError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _NoError implements LoginState {
-  const factory _NoError() = _$_NoError;
-}
-
-/// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String errorText});
+  $Res call(
+      {FieldModel email,
+      FieldModel password,
+      bool isLoading,
+      bool visiblePassword});
+
+  @override
+  $FieldModelCopyWith<$Res> get email;
+  @override
+  $FieldModelCopyWith<$Res> get password;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$_LoginStateCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$_LoginState>
+    implements _$$_LoginStateCopyWith<$Res> {
+  __$$_LoginStateCopyWithImpl(
+      _$_LoginState _value, $Res Function(_$_LoginState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorText = null,
+    Object? email = null,
+    Object? password = null,
+    Object? isLoading = null,
+    Object? visiblePassword = null,
   }) {
-    return _then(_$_Error(
-      null == errorText
-          ? _value.errorText
-          : errorText // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Error implements _Error {
-  const _$_Error(this.errorText);
-
-  @override
-  final String errorText;
-
-  @override
-  String toString() {
-    return 'LoginState.error(errorText: $errorText)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Error &&
-            (identical(other.errorText, errorText) ||
-                other.errorText == errorText));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, errorText);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return error(errorText);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return error?.call(errorText);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(errorText);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Error implements LoginState {
-  const factory _Error(final String errorText) = _$_Error;
-
-  String get errorText;
-  @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'LoginState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements LoginState {
-  const factory _Loading() = _$_Loading;
-}
-
-/// @nodoc
-abstract class _$$_EmailValueCopyWith<$Res> {
-  factory _$$_EmailValueCopyWith(
-          _$_EmailValue value, $Res Function(_$_EmailValue) then) =
-      __$$_EmailValueCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String emailValue});
-}
-
-/// @nodoc
-class __$$_EmailValueCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_EmailValue>
-    implements _$$_EmailValueCopyWith<$Res> {
-  __$$_EmailValueCopyWithImpl(
-      _$_EmailValue _value, $Res Function(_$_EmailValue) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? emailValue = null,
-  }) {
-    return _then(_$_EmailValue(
-      null == emailValue
-          ? _value.emailValue
-          : emailValue // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_EmailValue implements _EmailValue {
-  const _$_EmailValue(this.emailValue);
-
-  @override
-  final String emailValue;
-
-  @override
-  String toString() {
-    return 'LoginState.emailValue(emailValue: $emailValue)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_EmailValue &&
-            (identical(other.emailValue, emailValue) ||
-                other.emailValue == emailValue));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, emailValue);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_EmailValueCopyWith<_$_EmailValue> get copyWith =>
-      __$$_EmailValueCopyWithImpl<_$_EmailValue>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return emailValue(this.emailValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return emailValue?.call(this.emailValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (emailValue != null) {
-      return emailValue(this.emailValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return emailValue(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return emailValue?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (emailValue != null) {
-      return emailValue(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EmailValue implements LoginState {
-  const factory _EmailValue(final String emailValue) = _$_EmailValue;
-
-  String get emailValue;
-  @JsonKey(ignore: true)
-  _$$_EmailValueCopyWith<_$_EmailValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_EmailEmptyCopyWith<$Res> {
-  factory _$$_EmailEmptyCopyWith(
-          _$_EmailEmpty value, $Res Function(_$_EmailEmpty) then) =
-      __$$_EmailEmptyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EmailEmptyCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_EmailEmpty>
-    implements _$$_EmailEmptyCopyWith<$Res> {
-  __$$_EmailEmptyCopyWithImpl(
-      _$_EmailEmpty _value, $Res Function(_$_EmailEmpty) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_EmailEmpty implements _EmailEmpty {
-  const _$_EmailEmpty();
-
-  @override
-  String toString() {
-    return 'LoginState.emailEmpty()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmailEmpty);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return emailEmpty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return emailEmpty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (emailEmpty != null) {
-      return emailEmpty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return emailEmpty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return emailEmpty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (emailEmpty != null) {
-      return emailEmpty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EmailEmpty implements LoginState {
-  const factory _EmailEmpty() = _$_EmailEmpty;
-}
-
-/// @nodoc
-abstract class _$$_EmailErrorCopyWith<$Res> {
-  factory _$$_EmailErrorCopyWith(
-          _$_EmailError value, $Res Function(_$_EmailError) then) =
-      __$$_EmailErrorCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String emailError});
-}
-
-/// @nodoc
-class __$$_EmailErrorCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_EmailError>
-    implements _$$_EmailErrorCopyWith<$Res> {
-  __$$_EmailErrorCopyWithImpl(
-      _$_EmailError _value, $Res Function(_$_EmailError) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? emailError = null,
-  }) {
-    return _then(_$_EmailError(
-      null == emailError
-          ? _value.emailError
-          : emailError // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_EmailError implements _EmailError {
-  const _$_EmailError(this.emailError);
-
-  @override
-  final String emailError;
-
-  @override
-  String toString() {
-    return 'LoginState.emailError(emailError: $emailError)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_EmailError &&
-            (identical(other.emailError, emailError) ||
-                other.emailError == emailError));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, emailError);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_EmailErrorCopyWith<_$_EmailError> get copyWith =>
-      __$$_EmailErrorCopyWithImpl<_$_EmailError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return emailError(this.emailError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return emailError?.call(this.emailError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (emailError != null) {
-      return emailError(this.emailError);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return emailError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return emailError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (emailError != null) {
-      return emailError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EmailError implements LoginState {
-  const factory _EmailError(final String emailError) = _$_EmailError;
-
-  String get emailError;
-  @JsonKey(ignore: true)
-  _$$_EmailErrorCopyWith<_$_EmailError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_PasswordValueCopyWith<$Res> {
-  factory _$$_PasswordValueCopyWith(
-          _$_PasswordValue value, $Res Function(_$_PasswordValue) then) =
-      __$$_PasswordValueCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String passwordValue});
-}
-
-/// @nodoc
-class __$$_PasswordValueCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_PasswordValue>
-    implements _$$_PasswordValueCopyWith<$Res> {
-  __$$_PasswordValueCopyWithImpl(
-      _$_PasswordValue _value, $Res Function(_$_PasswordValue) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? passwordValue = null,
-  }) {
-    return _then(_$_PasswordValue(
-      null == passwordValue
-          ? _value.passwordValue
-          : passwordValue // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PasswordValue implements _PasswordValue {
-  const _$_PasswordValue(this.passwordValue);
-
-  @override
-  final String passwordValue;
-
-  @override
-  String toString() {
-    return 'LoginState.passwordValue(passwordValue: $passwordValue)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PasswordValue &&
-            (identical(other.passwordValue, passwordValue) ||
-                other.passwordValue == passwordValue));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, passwordValue);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_PasswordValueCopyWith<_$_PasswordValue> get copyWith =>
-      __$$_PasswordValueCopyWithImpl<_$_PasswordValue>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return passwordValue(this.passwordValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return passwordValue?.call(this.passwordValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (passwordValue != null) {
-      return passwordValue(this.passwordValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return passwordValue(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return passwordValue?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (passwordValue != null) {
-      return passwordValue(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PasswordValue implements LoginState {
-  const factory _PasswordValue(final String passwordValue) = _$_PasswordValue;
-
-  String get passwordValue;
-  @JsonKey(ignore: true)
-  _$$_PasswordValueCopyWith<_$_PasswordValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_PasswordEmptyCopyWith<$Res> {
-  factory _$$_PasswordEmptyCopyWith(
-          _$_PasswordEmpty value, $Res Function(_$_PasswordEmpty) then) =
-      __$$_PasswordEmptyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PasswordEmptyCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_PasswordEmpty>
-    implements _$$_PasswordEmptyCopyWith<$Res> {
-  __$$_PasswordEmptyCopyWithImpl(
-      _$_PasswordEmpty _value, $Res Function(_$_PasswordEmpty) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_PasswordEmpty implements _PasswordEmpty {
-  const _$_PasswordEmpty();
-
-  @override
-  String toString() {
-    return 'LoginState.passwordEmpty()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PasswordEmpty);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return passwordEmpty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return passwordEmpty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (passwordEmpty != null) {
-      return passwordEmpty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return passwordEmpty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return passwordEmpty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (passwordEmpty != null) {
-      return passwordEmpty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PasswordEmpty implements LoginState {
-  const factory _PasswordEmpty() = _$_PasswordEmpty;
-}
-
-/// @nodoc
-abstract class _$$_PasswordErrorCopyWith<$Res> {
-  factory _$$_PasswordErrorCopyWith(
-          _$_PasswordError value, $Res Function(_$_PasswordError) then) =
-      __$$_PasswordErrorCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String passwordError});
-}
-
-/// @nodoc
-class __$$_PasswordErrorCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_PasswordError>
-    implements _$$_PasswordErrorCopyWith<$Res> {
-  __$$_PasswordErrorCopyWithImpl(
-      _$_PasswordError _value, $Res Function(_$_PasswordError) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? passwordError = null,
-  }) {
-    return _then(_$_PasswordError(
-      null == passwordError
-          ? _value.passwordError
-          : passwordError // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PasswordError implements _PasswordError {
-  const _$_PasswordError(this.passwordError);
-
-  @override
-  final String passwordError;
-
-  @override
-  String toString() {
-    return 'LoginState.passwordError(passwordError: $passwordError)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PasswordError &&
-            (identical(other.passwordError, passwordError) ||
-                other.passwordError == passwordError));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, passwordError);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_PasswordErrorCopyWith<_$_PasswordError> get copyWith =>
-      __$$_PasswordErrorCopyWithImpl<_$_PasswordError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return passwordError(this.passwordError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return passwordError?.call(this.passwordError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (passwordError != null) {
-      return passwordError(this.passwordError);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return passwordError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return passwordError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (passwordError != null) {
-      return passwordError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PasswordError implements LoginState {
-  const factory _PasswordError(final String passwordError) = _$_PasswordError;
-
-  String get passwordError;
-  @JsonKey(ignore: true)
-  _$$_PasswordErrorCopyWith<_$_PasswordError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_VisiblePasswordCopyWith<$Res> {
-  factory _$$_VisiblePasswordCopyWith(
-          _$_VisiblePassword value, $Res Function(_$_VisiblePassword) then) =
-      __$$_VisiblePasswordCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool visiblePasswordValue});
-}
-
-/// @nodoc
-class __$$_VisiblePasswordCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_VisiblePassword>
-    implements _$$_VisiblePasswordCopyWith<$Res> {
-  __$$_VisiblePasswordCopyWithImpl(
-      _$_VisiblePassword _value, $Res Function(_$_VisiblePassword) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? visiblePasswordValue = null,
-  }) {
-    return _then(_$_VisiblePassword(
-      null == visiblePasswordValue
-          ? _value.visiblePasswordValue
-          : visiblePasswordValue // ignore: cast_nullable_to_non_nullable
+    return _then(_$_LoginState(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as FieldModel,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as FieldModel,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      visiblePassword: null == visiblePassword
+          ? _value.visiblePassword
+          : visiblePassword // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -1661,152 +156,71 @@ class __$$_VisiblePasswordCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VisiblePassword implements _VisiblePassword {
-  const _$_VisiblePassword(this.visiblePasswordValue);
+class _$_LoginState implements _LoginState {
+  _$_LoginState(
+      {required this.email,
+      required this.password,
+      this.isLoading = false,
+      this.visiblePassword = false});
 
   @override
-  final bool visiblePasswordValue;
+  final FieldModel email;
+  @override
+  final FieldModel password;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool visiblePassword;
 
   @override
   String toString() {
-    return 'LoginState.visiblePassword(visiblePasswordValue: $visiblePasswordValue)';
+    return 'LoginState(email: $email, password: $password, isLoading: $isLoading, visiblePassword: $visiblePassword)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VisiblePassword &&
-            (identical(other.visiblePasswordValue, visiblePasswordValue) ||
-                other.visiblePasswordValue == visiblePasswordValue));
+            other is _$_LoginState &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.visiblePassword, visiblePassword) ||
+                other.visiblePassword == visiblePassword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, visiblePasswordValue);
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, isLoading, visiblePassword);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisiblePasswordCopyWith<_$_VisiblePassword> get copyWith =>
-      __$$_VisiblePasswordCopyWithImpl<_$_VisiblePassword>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() noError,
-    required TResult Function(String errorText) error,
-    required TResult Function() loading,
-    required TResult Function(String emailValue) emailValue,
-    required TResult Function() emailEmpty,
-    required TResult Function(String emailError) emailError,
-    required TResult Function(String passwordValue) passwordValue,
-    required TResult Function() passwordEmpty,
-    required TResult Function(String passwordError) passwordError,
-    required TResult Function(bool visiblePasswordValue) visiblePassword,
-  }) {
-    return visiblePassword(visiblePasswordValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? noError,
-    TResult? Function(String errorText)? error,
-    TResult? Function()? loading,
-    TResult? Function(String emailValue)? emailValue,
-    TResult? Function()? emailEmpty,
-    TResult? Function(String emailError)? emailError,
-    TResult? Function(String passwordValue)? passwordValue,
-    TResult? Function()? passwordEmpty,
-    TResult? Function(String passwordError)? passwordError,
-    TResult? Function(bool visiblePasswordValue)? visiblePassword,
-  }) {
-    return visiblePassword?.call(visiblePasswordValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? noError,
-    TResult Function(String errorText)? error,
-    TResult Function()? loading,
-    TResult Function(String emailValue)? emailValue,
-    TResult Function()? emailEmpty,
-    TResult Function(String emailError)? emailError,
-    TResult Function(String passwordValue)? passwordValue,
-    TResult Function()? passwordEmpty,
-    TResult Function(String passwordError)? passwordError,
-    TResult Function(bool visiblePasswordValue)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (visiblePassword != null) {
-      return visiblePassword(visiblePasswordValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_NoError value) noError,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_EmailValue value) emailValue,
-    required TResult Function(_EmailEmpty value) emailEmpty,
-    required TResult Function(_EmailError value) emailError,
-    required TResult Function(_PasswordValue value) passwordValue,
-    required TResult Function(_PasswordEmpty value) passwordEmpty,
-    required TResult Function(_PasswordError value) passwordError,
-    required TResult Function(_VisiblePassword value) visiblePassword,
-  }) {
-    return visiblePassword(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NoError value)? noError,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_EmailValue value)? emailValue,
-    TResult? Function(_EmailEmpty value)? emailEmpty,
-    TResult? Function(_EmailError value)? emailError,
-    TResult? Function(_PasswordValue value)? passwordValue,
-    TResult? Function(_PasswordEmpty value)? passwordEmpty,
-    TResult? Function(_PasswordError value)? passwordError,
-    TResult? Function(_VisiblePassword value)? visiblePassword,
-  }) {
-    return visiblePassword?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NoError value)? noError,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_EmailValue value)? emailValue,
-    TResult Function(_EmailEmpty value)? emailEmpty,
-    TResult Function(_EmailError value)? emailError,
-    TResult Function(_PasswordValue value)? passwordValue,
-    TResult Function(_PasswordEmpty value)? passwordEmpty,
-    TResult Function(_PasswordError value)? passwordError,
-    TResult Function(_VisiblePassword value)? visiblePassword,
-    required TResult orElse(),
-  }) {
-    if (visiblePassword != null) {
-      return visiblePassword(this);
-    }
-    return orElse();
-  }
+  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
+      __$$_LoginStateCopyWithImpl<_$_LoginState>(this, _$identity);
 }
 
-abstract class _VisiblePassword implements LoginState {
-  const factory _VisiblePassword(final bool visiblePasswordValue) =
-      _$_VisiblePassword;
+abstract class _LoginState implements LoginState {
+  factory _LoginState(
+      {required final FieldModel email,
+      required final FieldModel password,
+      final bool isLoading,
+      final bool visiblePassword}) = _$_LoginState;
 
-  bool get visiblePasswordValue;
+  @override
+  FieldModel get email;
+  @override
+  FieldModel get password;
+  @override
+  bool get isLoading;
+  @override
+  bool get visiblePassword;
+  @override
   @JsonKey(ignore: true)
-  _$$_VisiblePasswordCopyWith<_$_VisiblePassword> get copyWith =>
+  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
       throw _privateConstructorUsedError;
 }

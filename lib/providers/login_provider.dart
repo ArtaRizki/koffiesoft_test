@@ -4,61 +4,58 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart' as d;
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:koffiesoft_test/models/field_model.dart';
 import '../consts/url.dart';
 import '../libraries/dio_client.dart';
 import '../libraries/validator.dart';
+import '../models/login_event.dart';
 import '../models/login_state.dart';
 
 class LoginProvider extends StateNotifier<LoginState> {
-  LoginProvider() : super(const LoginState.noError());
+  LoginProvider() : super(LoginState.noError());
 
   static final DioClient dio = DioClient();
 
   Future<void> changeLoading() async {
-    state = const LoginState.loading();
+    state = state.copyWith(isLoading: true);
   }
 
   Future<Map<String, dynamic>> loginUser(
       BuildContext context, String? val) async {
-    final bool emailEmpty =
-            state.maybeWhen(loading: () => true, orElse: () => false),
-        passwordEmpty =
-            state.maybeWhen(loading: () => true, orElse: () => false);
-    final String username = state.maybeWhen(
-        emailValue: (emailValue) => emailValue, orElse: () => "");
-    final String password = state.maybeWhen(
-        passwordValue: (passwordValue) => passwordValue, orElse: () => "");
-    final String emailError = state.maybeWhen(
-        emailError: (emailError) => emailError, orElse: () => "");
+    final bool emailEmpty = state.email.isEmpty,
+        passwordEmpty = state.password.isEmpty;
+    final String email = state.email.value, password = state.password.value;
+    final String emailError = state.email.errorMessage,
+        passwordError = state.password.errorMessage;
     checkEmail(val, emailEmpty, emailError);
+    checkPassword(val, passwordEmpty, passwordError);
     log("EMAIL KOSONG : $emailEmpty");
     log("EMAIL KOSONG : $emailError");
     log("PASSWORD KOSONG : $passwordEmpty");
-    state = const LoginState.loading();
+    log("PASSWORD KOSONG : $passwordError");
+    state = state.copyWith(isLoading: true);
     if (!emailEmpty && !passwordEmpty) {
       // try {
       d.Response<dynamic>? response = await dio.requestPost(
         loginPath,
-        {"username": username, "password": password},
+        {"email": email, "password": password},
         onSendProgress: null,
         onReceiveProgress: null,
         options: null,
       );
       Map<String, dynamic> result = response!.data;
       if (result['status']['kode'] == 'success') {
-        state = const LoginState.emailValue("");
-        state = const LoginState.passwordValue("");
         log("LOGIN RESULT : ${jsonEncode(result['data'])}");
         // up.user = userModelFromJson(jsonEncode(result['data']));
         // log("USER EMAIL : ${up.user.email}");
         // log("USER ID : ${up.user.id}");
         Fluttertoast.showToast(msg: "Login Sukses");
-        state = const LoginState.noError();
+        state = LoginState.noError();
         log("LOGIN RESULT 2 : ${jsonEncode(result)}");
         return result;
       } else {
         Fluttertoast.showToast(msg: jsonEncode(result['status']['keterangan']));
-        state = const LoginState.noError();
+        state = LoginState.noError();
         return {};
       }
       // } catch (e) {
@@ -66,23 +63,24 @@ class LoginProvider extends StateNotifier<LoginState> {
       //   return null;
       // }
     } else {
-      state = const LoginState.noError();
+      state = LoginState.noError();
       return {};
     }
   }
 
-  checkEmail(String? val, bool emailEmpty, String emailError) {
+  checkEmail(String? val, bool emailEmpty, String emailError) async {
     String? msg = loginEmail(val);
     emailEmpty = msg != null;
-    if (emailEmpty) {
-      state = const LoginState.emailEmpty();
-    }
+    // if (emailEmpty) {
+    //   state = state.copyWith(email: state.email.copyWith(isEmpty: true));
+    // }
     emailError = msg ?? "";
     log("CHECK EMAIL2 : $emailEmpty");
     log("CHECK EMAIL2 : $emailError");
-    log("CHECK EMAIL2 : ${state.maybeWhen(emailEmpty: () => true, orElse: () => false)}");
+    // log("CHECK EMAIL2 : ${state.maybeWhen(emailEmpty: () => true, orElse: () => false)}");
 
-    state = LoginState.emailError(emailError);
+    // state =
+    //     state.copyWith(email: state.email.copyWith(errorMessage: emailError));
   }
 
   checkPassword(String? val, bool passwordEmpty, String passwordError) {
@@ -92,6 +90,23 @@ class LoginProvider extends StateNotifier<LoginState> {
   }
 
   changeVisiblePassword(bool val) {
-    state = LoginState.visiblePassword(val);
+    state = state.copyWith(visiblePassword: true);
+  }
+
+  void mapEventsToState(LoginEvent loginEvent) async {
+    loginEvent.map(checkEmail: (checkEmail) {
+      String? msg = loginEmail(checkEmail.val);
+      bool emailEmpty = msg != null;
+      if (emailEmpty) {
+        state = state.copyWith(email: state.email.copyWith(isEmpty: true));
+      }
+      String emailError = msg ?? "";
+      log("CHECK EMAIL2 : $emailEmpty");
+      log("CHECK EMAIL2 : $emailError");
+      // log("CHECK EMAIL2 : ${state.maybeWhen(emailEmpty: () => true, orElse: () => false)}");
+
+      state =
+          state.copyWith(email: state.email.copyWith(errorMessage: emailError));
+    });
   }
 }

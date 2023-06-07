@@ -134,31 +134,31 @@ paketDecorationDatePicker(String hintTxt, bool isEmpty) {
 //       hintStyle: inter12Gray());
 // }
 
-generalDecoration(String hintTxt, bool isEmpty) {
+generalDecoration(String hintTxt, String error) {
   return InputDecoration(
-      suffixIcon:
-          Icon(Icons.warning, color: isEmpty ? Colors.red : Colors.transparent),
-      border: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(6)),
-        borderSide: BorderSide(color: isEmpty ? Colors.red : Colors.grey),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(6)),
-        borderSide: BorderSide(color: isEmpty ? Colors.red : Colors.blue),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(6)),
-        borderSide: BorderSide(color: isEmpty ? Colors.red : Colors.grey),
-      ),
-      disabledBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(6)),
-        borderSide: BorderSide(color: isEmpty ? Colors.red : Colors.grey),
-      ),
-      focusColor: Colors.blue,
-      contentPadding: const EdgeInsets.all(10),
-      alignLabelWithHint: true,
-      hintText: hintTxt,
-      );
+    suffixIcon: Icon(Icons.warning,
+        color: error != "" ? Colors.red : Colors.transparent),
+    border: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      borderSide: BorderSide(color: error != "" ? Colors.red : Colors.grey),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      borderSide: BorderSide(color: error != "" ? Colors.red : Colors.blue),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      borderSide: BorderSide(color: error != "" ? Colors.red : Colors.grey),
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      borderSide: BorderSide(color: error != "" ? Colors.red : Colors.grey),
+    ),
+    focusColor: Colors.blue,
+    contentPadding: const EdgeInsets.all(10),
+    alignLabelWithHint: true,
+    hintText: hintTxt,
+  );
 }
 
 registerDecoration(String hintTxt, bool isEmpty) {
